@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { type UserProps } from '../../gateways/user-entity.interface'
+import { type UserProps } from '../../../domain/interface/user/user-entity.interface'
 
 interface Props {
   name?: string

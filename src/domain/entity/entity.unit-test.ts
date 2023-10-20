@@ -1,5 +1,5 @@
 import { validate as uuidValidate } from 'uuid'
-import { userDataBuilder } from '../domain/entity/helper/user-data-builder'
+import { userDataBuilder } from '../../shared/util/user/user-data-builder'
 import { Entity } from './entity'
 
 interface StubProps {

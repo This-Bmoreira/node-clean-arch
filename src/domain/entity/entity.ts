@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
-import { MissingPropertyError } from './error/missing-property-error'
+import { MissingPropertyError } from '../../shared/error/missing-property-error'
 
 export abstract class Entity<Props = unknown> {
   public readonly id: string
