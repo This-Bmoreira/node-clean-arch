@@ -5,7 +5,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --passWithNoTests --runInBand --noStackTrace",
+    "test:int": "jest  --passWithNoTests --runInBand --noStackTrace --config ./jest.int.config.ts",
     "dev": "tsx watch src/server.ts",
     "prepare": "husky install"
   },
@@ -41,6 +42,7 @@
     }
   },
   "dependencies": {
+    "class-validator": "^0.14.0",
     "uuid": "^9.0.1"
   }
 }
