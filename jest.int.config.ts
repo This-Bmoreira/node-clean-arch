@@ -16,7 +16,7 @@ const config: Config = {
     prefix: '<rootDir>/'
   }),
   testEnvironment: 'node',
-  testRegex: ['.*\\.unit-(spec|test)\\.ts$'],
+  testRegex: ['.*\\.int-(spec|test)\\.ts$'],
   transform: { '^.+\\.(t|j)s$': 'ts-jest' }
 }
 
