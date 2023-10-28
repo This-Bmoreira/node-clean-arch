@@ -1,6 +1,6 @@
-import { Entity } from '../../../domain/entity/entity'
-import { NotFoundError } from '../../error/not-found-error'
-import { userDataBuilder } from '../user/user-data-builder'
+import { Entity } from '../../../../domain/entity/entity'
+import { NotFoundError } from '../../../error/not-found-error'
+import { userDataBuilder } from '../../user/user-data-builder'
 import { InMemoryRepository } from './in-memory.repository'
 
 interface StubEntityProps {
