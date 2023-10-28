@@ -1,6 +1,6 @@
-import { type RepositoryInterface } from '../../../adapter/gateways/repository.interface'
-import { type Entity } from '../../../domain/entity/entity'
-import { NotFoundError } from '../../error/not-found-error'
+import { type RepositoryInterface } from '../../../../adapter/gateways/repository.interface'
+import { type Entity } from '../../../../domain/entity/entity'
+import { NotFoundError } from '../../../error/not-found-error'
 
 export abstract class InMemoryRepository<E extends Entity<unknown>>
 implements RepositoryInterface<E> {
