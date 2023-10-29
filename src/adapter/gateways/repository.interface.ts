@@ -1,6 +1,7 @@
 import { type Entity } from '../../domain/entity/entity'
 import { type UserEntity } from '../../domain/entity/user/user.entity'
 import { type SearchParams } from '../../shared/util/repository/search-params/search-params'
+import { type SearchResult } from '../../shared/util/repository/search-params/search-result'
 
 export interface RepositoryInterface<E extends Entity> {
   insert: (entity: E) => Promise<void>
@@ -20,15 +21,26 @@ export interface SearchProps<Filter = string> {
   filter?: Filter | null
 }
 
-export interface SearchableRepositoryInterface<
-  E extends Entity,
-  SearchParams,
-  SearchOutput,
-> extends RepositoryInterface<E> {
-  search: (props: SearchParams) => Promise<SearchOutput>
+export interface SearchResultProps<E extends Entity, Filter> {
+  items: E[]
+  total: number
+  currentPage: number
+  perPage: number
+  sort: string | null
+  sortDir: string | null
+  filter: Filter | null
 }
 
-export interface UserRepository extends SearchableRepositoryInterface<UserEntity, SearchParams, any> {
+export interface SearchableRepositoryInterface<
+  E extends Entity,
+  searchInput = SearchParams,
+  Filter = string,
+  searchOutput = SearchResult<E, Filter>,
+> extends RepositoryInterface<E> {
+  search: (props: searchInput) => Promise<searchOutput>
+}
+
+export interface UserRepository extends SearchableRepositoryInterface<UserEntity, SearchParams, SearchResult<UserEntity, string>> {
   findByEmail: (email: string) => Promise<UserEntity>
   emailExists: (email: string) => Promise<void>
 }
