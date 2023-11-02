@@ -1,14 +1,14 @@
 import { type SearchProps, type SortDirection } from '../../../../adapter/gateways/repository.interface'
 
 const defaultValue = 15
-export class SearchParams {
+export class SearchParams <Filter = string> {
   protected _page: number
   protected _perPage = defaultValue
   protected _sort: string | null
   protected _sortDir: SortDirection | null
-  protected _filter: string | null
+  protected _filter: Filter | null
 
-  constructor (props: SearchProps = {}) {
+  constructor (props: SearchProps<Filter> = {}) {
     this.page = props.page
     this.perPage = props.perPage
     this.sort = props.sort
@@ -67,12 +67,12 @@ export class SearchParams {
     this._sortDir = dir !== 'asc' && dir !== 'desc' ? 'desc' : dir
   }
 
-  get filter (): string {
+  get filter (): Filter | null {
     return this._filter
   }
 
-  private set filter (value: string | null) {
+  private set filter (value: Filter | null) {
     this._filter =
-      value === null || value === undefined || value === '' ? null : `${value}`
+      value === null || value === undefined || value === '' ? null : (`${value}` as any)
   }
 }
